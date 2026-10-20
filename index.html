@@ -819,7 +819,7 @@
         t.tabIndex = on ? 0 : -1;
         document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
       });
-      if (scroll) document.querySelector('.tabbar').scrollIntoView({ block: 'start' });
+      if (scroll) { var top = document.querySelector('.tab-sentinel').getBoundingClientRect().top + window.pageYOffset; window.scrollTo({ top: top, behavior: 'instant' }); }
       try { history.replaceState(null, '', '#' + id); } catch (e) {}
     }
     tabs.forEach(function (t, i) {

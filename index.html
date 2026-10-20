@@ -519,7 +519,8 @@
   section.tinted:has(+ .divider.mid) { margin-bottom: 1.25rem; }
   .divider.mid + section.tinted, .divider.mid + .mini-spot + section.tinted { margin-top: 1.25rem; }
   .guide-disc { margin: 1.5rem auto 1.25rem; width: calc(100% - 2.5rem); }
-  .disc-div { margin-top: 2.5rem; }
+  .disc-div { margin-top: .25rem; }
+  @media (max-width: 1099.98px) { .disc-div { margin-top: .75rem; } }
   .guide-disc .big { font-family: "Gluten", cursive; font-size: 1.6rem; margin: 0 auto .25rem; }
   @media all { .divider.mid + .mini-spot, .divider.mid + .mini-spot.xw { margin-top: .2rem; } .mini-spot .mini.wide.xwide { top: auto; } .divider.mid + .mini-spot.xw { margin-bottom: -.8rem; } }
   .mini-spot.disc-tip { margin: -4.4rem auto -1.2rem; width: calc(100% - .75rem); max-width: 46rem; padding: 0; justify-content: flex-end; position: relative; z-index: 3; }

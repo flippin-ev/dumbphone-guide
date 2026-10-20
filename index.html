@@ -549,8 +549,8 @@
   /* ---------- side nav ---------- */
   #kinds, #research, #titan, #tips, #blackberry, #flipphone, #howx, #inconvenience, #disclaimer { scroll-margin-top: 7rem; }
   .sidenav { background: color-mix(in srgb, var(--pink) 14%, var(--card)); border: 2px dashed var(--pink); }
-  .sidenav ul { list-style: none; margin: 0; padding: 0; }
-  .sidenav a { display: block; color: var(--ink); text-decoration: none; border-radius: 10px; padding: .3rem .55rem; font-family: "Gluten", cursive; font-weight: 500; font-size: .86rem; line-height: 1.3; transition: background .15s; }
+  .sidenav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
+  .sidenav a { display: block; color: var(--ink); text-decoration: none; border-radius: 10px; padding: .32rem .55rem; font-family: "Gluten", cursive; font-weight: 500; font-size: .86rem; line-height: 1.18; transition: background .15s; }
   .sidenav a:hover { background: color-mix(in srgb, var(--pink) 30%, transparent); }
   .sidenav a.on { background: var(--pink); color: #3A2350; font-weight: 700; }
   .sidenav a.on::before { content: "♡ "; }
@@ -559,8 +559,8 @@
   @media (min-width: 1100px) {
     #guide { display: grid; grid-template-columns: 200px minmax(0, 1fr); }
     #guide > * { grid-column: 2; }
-    #guide > .sidenav { grid-column: 1; grid-row: 1 / span 60; align-self: start; position: sticky; top: 5.6rem; margin: 2.25rem 0 2rem clamp(.75rem, 1.5vw, 1.5rem);
-      border-radius: 18px; padding: .8rem .45rem; box-shadow: 3px 3px 0 color-mix(in srgb, var(--pink) 45%, transparent); }
+    #guide > .sidenav { grid-column: 1; grid-row: 1 / span 60; align-self: start; position: sticky; top: 4.6rem; margin: 1.1rem 0 2rem clamp(.75rem, 1.5vw, 1.5rem);
+      border-radius: 18px; padding: .7rem .45rem .8rem; box-shadow: 3px 3px 0 color-mix(in srgb, var(--pink) 45%, transparent); }
   }
   @media (max-width: 1099.98px) {
     .sidenav { position: fixed; left: 0; top: 50%; z-index: 30; width: min(240px, 72vw); border-left: none; border-radius: 0 18px 18px 0; padding: .8rem .45rem;

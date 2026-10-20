@@ -560,6 +560,8 @@
     #guide:not([hidden]) { display: grid; grid-template-columns: 210px minmax(0, 1fr); }
     #guide > * { grid-column: 2; }
     #guide > .hello-sec { padding-top: 1.1rem; }
+    body.on-guide main + .divider { padding-left: 210px; }
+    body.on-guide footer { padding-left: calc(210px + 1.25rem); }
     #guide .hello, #guide .swaps { margin-left: calc(12px - clamp(1.25rem, 4vw, 3.5rem)); margin-right: calc(12px - clamp(1.25rem, 4vw, 3.5rem)); }
     #guide > .sidenav { grid-column: 1; grid-row: 1 / span 60; align-self: start; position: sticky; top: 4.6rem; margin: 1.1rem 6px 2rem 18px;
       border-radius: 18px; padding: .75rem .5rem; box-shadow: 3px 3px 0 color-mix(in srgb, var(--pink) 45%, transparent); }
@@ -871,6 +873,7 @@
         document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
       });
       if (scroll) { var top = document.querySelector('.tab-sentinel').getBoundingClientRect().top + window.pageYOffset; window.scrollTo({ top: top, behavior: 'instant' }); }
+      document.body.classList.toggle('on-guide', id === 'guide');
       try { history.replaceState(null, '', '#' + id); } catch (e) {}
     }
     tabs.forEach(function (t, i) {
@@ -885,6 +888,7 @@
     document.querySelectorAll('.gonext').forEach(function (b) {
       b.addEventListener('click', function (e) { e.preventDefault(); show(b.dataset.go, true); document.getElementById('tab-' + b.dataset.go).focus({ preventScroll: true }); });
     });
+    document.body.classList.toggle('on-guide', !document.getElementById('guide').hidden);
     if (location.hash === '#story') show('story', false);
     document.querySelectorAll('a[href="#rcs-caveat"]').forEach(function (a) {
       a.addEventListener('click', function () { var d = document.getElementById('rcs-caveat'); if (d) d.open = true; });

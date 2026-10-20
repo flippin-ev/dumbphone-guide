@@ -546,6 +546,31 @@
   .swap .aka { display: block; font-size: .78em; font-weight: 500; opacity: .75; margin-top: .1rem; }
   .kinds-note { margin: -.4rem 0 1rem; color: var(--ink-soft); }
   section:has(+ .divider.mid) p:last-child { margin-bottom: 0; }
+  /* ---------- side nav ---------- */
+  #kinds, #research, #titan, #tips, #blackberry, #flipphone, #howx, #inconvenience, #disclaimer { scroll-margin-top: 7rem; }
+  .sidenav { background: color-mix(in srgb, var(--pink) 14%, var(--card)); border: 2px dashed var(--pink); }
+  .sidenav ul { list-style: none; margin: 0; padding: 0; }
+  .sidenav a { display: block; color: var(--ink); text-decoration: none; border-radius: 10px; padding: .3rem .55rem; font-size: .86rem; line-height: 1.3; transition: background .15s; }
+  .sidenav a:hover { background: color-mix(in srgb, var(--pink) 30%, transparent); }
+  .sidenav a.on { background: var(--pink); color: #3A2350; font-weight: 700; }
+  .sidenav a.on::before { content: "♡ "; }
+  .sidenav-h { font-family: "Gluten", cursive; font-weight: 700; color: var(--plum); font-size: 1.05rem; margin: 0 0 .35rem .55rem; }
+  .sidenav-tab { display: none; }
+  @media (min-width: 1100px) {
+    #guide { display: grid; grid-template-columns: 200px minmax(0, 1fr); }
+    #guide > * { grid-column: 2; }
+    #guide > .sidenav { grid-column: 1; grid-row: 1 / span 60; align-self: start; position: sticky; top: 5.6rem; margin: 2.25rem 0 2rem clamp(.75rem, 1.5vw, 1.5rem);
+      border-radius: 18px; padding: .8rem .45rem; box-shadow: 3px 3px 0 color-mix(in srgb, var(--pink) 45%, transparent); }
+  }
+  @media (max-width: 1099.98px) {
+    .sidenav { position: fixed; left: 0; top: 50%; z-index: 30; width: min(240px, 72vw); border-left: none; border-radius: 0 18px 18px 0; padding: .8rem .45rem;
+      transform: translate(-100%, -50%); transition: transform .25s ease; }
+    .sidenav.open { transform: translate(0, -50%); box-shadow: 3px 3px 0 color-mix(in srgb, var(--pink) 45%, transparent); }
+    .sidenav-tab { display: block; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); writing-mode: vertical-rl; text-orientation: mixed;
+      background: var(--pink); color: #3A2350; border: 0; border-radius: 0 12px 12px 0; padding: .75rem .28rem; font: 700 .85rem "Gluten", cursive; letter-spacing: .04em; cursor: pointer; box-shadow: 2px 2px 0 rgba(58,35,80,.25); }
+    .sidenav.open .sidenav-tab { opacity: .9; }
+  }
+  @media (prefers-reduced-motion: reduce) { .sidenav { transition: none; } }
 </style>
 </head>
 <body>
@@ -584,6 +609,11 @@
 
 <main>
 <div id="guide" role="tabpanel" aria-labelledby="tab-guide">
+  <nav class="sidenav" id="sidenav" aria-label="Guide sections">
+    <button class="sidenav-tab" type="button" aria-expanded="false" aria-controls="sidenav">jump to ✧</button>
+    <p class="sidenav-h">jump to ✧</p>
+    <ul><li><a href="#kinds">The kinds of dumbphones</a></li><li><a href="#research">How I did my research</a></li><li><a href="#titan">Why the Titan Pocket</a></li><li><a href="#tips">Tips for your transition</a></li><li><a href="#blackberry">Life with my minimal smartphone</a></li><li><a href="#flipphone">Life with my feature phone / dumbphone</a></li><li><a href="#howx">How do I do X on a dumbphone?</a></li><li><a href="#inconvenience">Inconvenience is good!!</a></li><li><a href="#disclaimer">A little disclaimer</a></li></ul>
+  </nav>
   <section class="hello-sec">
     <div class="wrap">
       <div class="hello">
@@ -598,7 +628,7 @@
 
   <section>
     <div class="wrap">
-      <h2>The different kinds of dumbphones</h2>
+      <h2 id="kinds">The different kinds of dumbphones</h2>
       <div class="swaps">
         <div class="swap"><strong>Minimalist smartphones <span class="aka">(aka "dumb" smartphones)</span></strong><span>Basically a smartphone in dumb packaging. They usually run Android, so you can still download the few apps you truly need, but the small screen, slower speed, and sometimes a physical keyboard make everything else way less tempting. They can be super helpful for cutting down time spent on your phone and moving away from the most addictive tech, and they're a great fit if you're nervous about completely cutting yourself off from certain apps or features.<span class="phonecards"><a class="phonecard" href="https://www.unihertz.com/products/titan-pocket" target="_blank" rel="noopener"><svg viewBox="0 0 54 60" aria-hidden="true"><rect x="5" y="3" width="44" height="54" rx="7" fill="var(--lilac)" stroke="var(--ink)" stroke-width="2"/><rect x="11" y="8" width="32" height="24" rx="3" fill="var(--screen)"/><rect x="10" y="36" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="17" y="36" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="24" y="36" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="31" y="36" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="38" y="36" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="10" y="42" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="17" y="42" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="24" y="42" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="31" y="42" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="38" y="42" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="10" y="48" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="17" y="48" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="24" y="48" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="31" y="48" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="38" y="48" width="5" height="4" rx="1.5" fill="var(--card)"/></svg><b>Titan Pocket</b><small>square screen + QWERTY keyboard (my first!)</small></a><a class="phonecard" href="https://www.unihertz.com/products/jelly-star" target="_blank" rel="noopener"><svg viewBox="0 0 54 60" aria-hidden="true"><rect x="16" y="12" width="22" height="38" rx="5" fill="var(--lilac)" stroke="var(--ink)" stroke-width="2"/><rect x="19" y="16" width="16" height="27" rx="2" fill="var(--screen)"/><circle cx="27" cy="46.5" r="1.6" fill="var(--card)"/></svg><b>Jelly Star</b><small>a teeny tiny 3-inch Android</small></a><a class="phonecard" href="https://minimalcompany.com/" target="_blank" rel="noopener"><svg viewBox="0 0 54 60" aria-hidden="true"><rect x="5" y="3" width="44" height="54" rx="7" fill="var(--lilac)" stroke="var(--ink)" stroke-width="2"/><rect x="11" y="8" width="32" height="24" rx="3" fill="var(--screen)"/><rect x="10" y="36" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="17" y="36" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="24" y="36" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="31" y="36" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="38" y="36" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="10" y="42" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="17" y="42" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="24" y="42" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="31" y="42" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="38" y="42" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="10" y="48" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="17" y="48" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="24" y="48" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="31" y="48" width="5" height="4" rx="1.5" fill="var(--card)"/><rect x="38" y="48" width="5" height="4" rx="1.5" fill="var(--card)"/></svg><b>Minimal Phone</b><small>e-ink screen + QWERTY keyboard</small></a></span></span></div>
         <div class="swap"><strong>True dumbphones / feature phones <span class="aka">(non-smartphones)</span></strong><span>There's a big range here. On one end are newer, simpler phones designed for modern life. They skip the stuff that pulls you in (no web browser, no app store, no social media) but often keep helpful tools a basic flip phone wouldn't have, like directions, music and podcasts, a decent camera, weather, or a hotspot. Those extras can make a big difference for getting around and feeling safe when you're out. Some of these (like mine) are "locked-down" feature phones: they can use data, but only for a few built-in tools like maps or email, and you can never add apps or a browser. On the other end is a literal flip phone that just calls and texts, and there's definitely a middle ground too! I started with a "dumb" smartphone and eventually moved to a feature phone / dumbphone, but honestly, either one is a great step!<span class="phonecards"><a class="phonecard" href="https://www.thelightphone.com/lightiii" target="_blank" rel="noopener"><svg viewBox="0 0 54 60" aria-hidden="true"><rect x="12" y="3" width="30" height="54" rx="6" fill="var(--lilac)" stroke="var(--ink)" stroke-width="2"/><rect x="16" y="8" width="22" height="36" rx="3" fill="var(--screen)"/><rect x="22" y="49" width="10" height="3" rx="1.5" fill="var(--card)"/></svg><b>Light Phone III</b><small>super minimal, just the essentials</small></a><a class="phonecard" href="https://sunbeamwireless.com/" target="_blank" rel="noopener"><svg viewBox="0 0 54 60" aria-hidden="true"><rect x="13" y="2" width="28" height="27" rx="6" fill="var(--lilac)" stroke="var(--ink)" stroke-width="2"/><rect x="17" y="6" width="20" height="17" rx="2" fill="var(--screen)"/><rect x="13" y="31" width="28" height="27" rx="6" fill="var(--lilac)" stroke="var(--ink)" stroke-width="2"/><rect x="17" y="38" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="24" y="38" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="31" y="38" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="17" y="43" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="24" y="43" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="31" y="43" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="17" y="48" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="24" y="48" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="31" y="48" width="5" height="3" rx="1.2" fill="var(--card)"/></svg><b>Sunbeam F1</b><small>the flip phone I have now ♡</small></a><a class="phonecard" href="https://en.wikipedia.org/wiki/Nokia_2780_Flip" target="_blank" rel="noopener"><svg viewBox="0 0 54 60" aria-hidden="true"><rect x="13" y="2" width="28" height="27" rx="6" fill="var(--lilac)" stroke="var(--ink)" stroke-width="2"/><rect x="17" y="6" width="20" height="17" rx="2" fill="var(--screen)"/><rect x="13" y="31" width="28" height="27" rx="6" fill="var(--lilac)" stroke="var(--ink)" stroke-width="2"/><rect x="17" y="38" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="24" y="38" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="31" y="38" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="17" y="43" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="24" y="43" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="31" y="43" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="17" y="48" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="24" y="48" width="5" height="3" rx="1.2" fill="var(--card)"/><rect x="31" y="48" width="5" height="3" rx="1.2" fill="var(--card)"/></svg><b>Nokia 2780 Flip</b><small>a classic, affordable flip</small></a></span></span></div>
@@ -625,7 +655,7 @@
 
   <section>
     <div class="wrap">
-      <h2>Why I started with the Titan Pocket</h2>
+      <h2 id="titan">Why I started with the Titan Pocket</h2>
       <figure class="snap" data-title="me_and_my_titan_pocket.jpg"><img class="shot zoom-open" tabindex="0" role="button" data-title="me_and_my_titan_pocket.jpg" src="titan-selfie.jpg" width="900" height="900" alt="Me making an excited face while holding up my Titan Pocket, a small black phone with a square screen and a full physical keyboard."><img class="shot zoom-open" tabindex="0" role="button" data-title="titan_pocket.jpg" src="titan-product.jpg" width="600" height="600" alt="The Titan Pocket from the front and side: a rugged black phone with a square touchscreen and a full QWERTY keyboard."></figure>
       <p>I did some research on r/dumbphones and decided the Titan Pocket would be a good fit for me initially. I was worried that switching straight to T9 texting might be too big of a jump and discourage me from the dumbphone journey altogether. I also liked that it was an older model running an older version of Android (Android 11), so it would be a little slower overall and generally just a little busted.</p>
       <p>My main goal was to keep the things I NEEDED, but slow myself down and make all the non-essential stuff more inconvenient. Who wants to scroll YouTube Shorts on a 3-inch screen? (Me, sometimes, evidently. But it did help.) At the time, I felt like the apps I absolutely NEEDED were maps, rideshare apps, Okta Verify for work, and Spotify, plus the basic phone functions, and the Titan Pocket checked all of those boxes. It also had a physical QWERTY keyboard, which I loved because it was fun and definitely slowed me down.</p>
@@ -642,7 +672,7 @@
 
   <section class="tinted">
     <div class="wrap">
-      <h2>Tips &amp; things to know for your transition</h2>
+      <h2 id="tips">Tips &amp; things to know for your transition</h2>
       <div class="swaps">
         <div class="swap"><strong>Get a physical SIM card</strong><span>One step of switching will likely be getting a physical SIM card. This depends on the phone, but both of the ones I've had used a physical SIM. Most newer iPhones use an eSIM (in the US, the iPhone 14 and later don't even have a SIM slot), so you'll have to either go to your carrier's store and get a physical SIM or order one online. Once you have it, switching between dumbphones gets way easier!</span></div>
         <div class="swap"><strong>RIP blue texts</strong><span>For my iPhone users, hold my hand while I tell you this: you will have to say goodbye to your blue text messages… dumbphones evidently do not run on Apple lol. I was pretty nervous about this when I first switched, but my lovely friends were very supportive overall. (You will get teased here and there. That's simply part of the price you pay for being a dumbphone legend.) You'll most likely be using a phone that runs Android or a simpler operating system like KaiOS (my phone's is called "BasicOS" loll). And the land of green texts is not as scary as it seems! At the end of the day, a text is a text: your friends can still reach you, and the people who matter won't care what color your text bubble is (which sounds kind of silly when you write it out, right?). If your new phone supports RCS, you'll still get a lot of the features you're used to from iMessage, like typing bubbles, reactions, read receipts, and higher-quality photos and videos, even when texting iPhone users. Plus, Android emojis are lowkey cuter, and some of them even do little dances. The phone I use now only does SMS/MMS, and it's still so, so doable to get by with texting and group chats. Do I miss an emoji here and there? Sure. It's not the end of the world, babe.</span></div>
@@ -657,7 +687,7 @@
 
   <section>
     <div class="wrap">
-      <h2>Life with my weird little BlackBerry</h2>
+      <h2 id="blackberry">Life with my weird little BlackBerry</h2>
       <p>I didn't really prepare for my transition ahead of time. It was sort of a fed-up, last-straw decision that I didn't really consult anyone about. I kind of just came out of the portal of a random February weekend with my weird little futuristic BlackBerry and, like, half of my hair cut off (a hair chop is not required for dumbphone life, but bonus points for some extra chaos to keep things spicy). The reactions were certainly mixed but overwhelmingly POSITIVE, especially from people our age, which I didn't quite expect. I think a lot of people are quietly holding onto a lot of mixed feelings about smartphones, and hey, <a href="#story" class="gonext" data-go="story">I get why</a>.</p>
       <p>Immediately, I noticed a huge difference in how much I would get sucked into my phone. It's <em>objectively</em> much harder when your experience is annoying and your screen isn't great to look at. Trying to navigate apps that aren't meant for a 3-inch square screen means things are cut off, you can't click certain things, and everything is tiny, squished, and inconvenient. (I liked to imagine the probably singular guy at every company who was hired to program their software to work on a Titan Pocket.) This alone did wonders in getting me off of most apps and shifting me over to doing these things on my computer instead. Some of these included checking the weather, any banking apps, Venmo for the most part, shopping/Depop/DoorDash, YouTube, streaming apps, and tbh even just browsing the web in general (social media not mentioned since I had already gotten off virtually all of those apps before my switch).</p>
       <p>I also noticed just how often I reached for my phone, because that habit didn't fade right away. It was humbling (and a whole new experience) to grab the device, realize there finally wasn't a constant stream of notifications and content trying to steal my attention, and then have no option but to… put it down? That cycle definitely repeated itself until my brain learned there just wasn't much interesting on there anymore.</p>
@@ -671,7 +701,7 @@
 
   <section>
     <div class="wrap">
-      <h2>Life with my silly little flip phone</h2>
+      <h2 id="flipphone">Life with my silly little flip phone</h2>
       <figure class="snap" data-title="my_sunbeam.jpg"><img class="shot zoom-open" tabindex="0" role="button" data-title="flip_phone_concert.jpg" src="sunbeam-concert.jpg" width="600" height="800" alt="My hand holding my flip phone up at a nighttime outdoor concert, with a huge crowd below lit pink and dotted with phone flashlights."><img class="shot zoom-open" tabindex="0" role="button" data-title="sunbeam_f1.jpg" src="sunbeam-product.jpg" width="600" height="600" alt="The Sunbeam F1 flip phone in navy blue, shown open with its screen and physical keypad, and closed with its small outer screen."></figure><p>I was SO excited for this phone to come, and not just because I would get to hang up on people by snapping my flip phone shut on them (although that was a big part of it). I'd never really known what it felt like to not have the whole internet in my pocket, and I really wanted to find out. When it finally came, I flipped it open to see a list of tools: messages, contacts, calls and voicemail, email, calculator, clock, and so on. The list runs out quite quickly. It does have a few genuinely cool extras, though, like a weather app (honestly better than the Titan Pocket's), navigation, a music player, a flashlight (concert approved), and a hotspot I can use in a pinch. I tested out the T9 texting, played around with the calculator (turns out you can calculate a loan payment on this thing?!), took a few potato-quality photos, and that was it. No apps, no browser, no constant stimulation.</p>
       <p>Using a phone this limited has made me realize just how many everyday tools have quietly been folded into our smartphones over the years. Your phone is your wallet, your map, your camera, your alarm clock, your concert ticket, your music player, your ride home… of course it feels impossible to not have it in your hand every 5 minutes. I felt tied to and deeply reliant on something that wasn't making me feel good. Now that my phone can do so little, I've had to find new ways to do all of those things, and it's actually been really fun :)</p>
       <aside class="bubble r"><svg class="cloud" viewBox="0 0 200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M32,96 A20,20 0 0 1 20,58 A26,26 0 0 1 58,30 A32,32 0 0 1 114,20 A28,28 0 0 1 166,36 A24,24 0 0 1 182,80 A20,20 0 0 1 150,104 A26,26 0 0 1 100,106 A24,24 0 0 1 56,104 A16,16 0 0 1 32,96 Z"/></svg><span class="bt"><b>EV tip ✧</b> host a CD night and let your friends pick the music from your collection!</span></aside><p>A lot of my daily tasks have been outsourced to my computer or to other external devices. I now get to use a cute pink camera to take pictures of my friends! I recently made a beaded necklace to carry my physical transit card around! I've been building my CD collection, which means going on super fun CD hunts with friends (and chatting with strangers at CD stores to get their music recs), and having friends over and letting them pick from my collection for what we listen to while hanging out! Every step of this journey genuinely just brings me down a fun, whimsical path that connects me more to the place I live and the people in my community. Spreading those tools back out across different devices has been so huge in helping me not be so reliant on my phone, and in pushing back against a world where a smartphone is basically required to exist as a human in modern-day life. (I go into specific detail on how I do most everyday things in the <a href="#howx">How do I do X on this phone?</a> section below.)</p>
@@ -733,7 +763,7 @@
 
   <p class="divider mid disc-div" aria-hidden="true">⋆｡˚ ☁︎ ˚｡⋆ ♡ ⋆｡˚ ☁︎ ˚｡⋆</p>
   <div class="disc guide-disc">
-    <p class="big">A little disclaimer ♡</p>
+    <p class="big" id="disclaimer">A little disclaimer ♡</p>
     <p>This guide is not here to force you or beg you to get rid of your smartphone. I truly believe that has to come from you wanting it yourself, not from someone else telling you to. It's just here to hopefully shed some light on the process and help out anyone who's been feeling this way and hoping for a solution. And this is just what has worked for ME. Everyone is different, and some people are super capable of setting limits on their smartphone that work great for them. Unfortunately, the addictive tech that got me was a lot better at its job than I was at resisting it, so I needed a more drastic measure.</p>
     <p class="disc-h">Not ready to switch? Some things to try first:</p>
     <ul>
@@ -883,6 +913,24 @@
         bar.classList.toggle('stuck', !entries[0].isIntersecting);
       }).observe(sentinel);
     }
+
+    (function () {
+      var nav = document.getElementById('sidenav'), tab = nav && nav.querySelector('.sidenav-tab');
+      if (tab) {
+        var setOpen = function (o) { nav.classList.toggle('open', o); tab.setAttribute('aria-expanded', o); };
+        tab.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!nav.classList.contains('open')); });
+        nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+        document.addEventListener('click', function (e) { if (!nav.contains(e.target)) setOpen(false); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+      }
+      var links = document.querySelectorAll('.sidenav a');
+      if (!links.length || !('IntersectionObserver' in window)) return;
+      var map = {}; links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { links.forEach(function (l) { l.classList.remove('on'); }); map[e.target.id].classList.add('on'); } });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+    })();
   })();
 </script>
 </body>

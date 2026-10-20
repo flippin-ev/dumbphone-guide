@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://flippin-ev.github.io/dumbphone-guide/sitemap.xml

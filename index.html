@@ -931,12 +931,22 @@
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
       }
       var links = document.querySelectorAll('.sidenav a');
-      if (!links.length || !('IntersectionObserver' in window)) return;
-      var map = {}; links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
-      var io = new IntersectionObserver(function (es) {
-        es.forEach(function (e) { if (e.isIntersecting) { links.forEach(function (l) { l.classList.remove('on'); }); map[e.target.id].classList.add('on'); } });
-      }, { rootMargin: '-20% 0px -70% 0px' });
-      Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+      if (!links.length) return;
+      var items = [].map.call(links, function (a) { return { a: a, el: document.getElementById(a.getAttribute('href').slice(1)) }; }).filter(function (x) { return x.el; });
+      var lock = 0;
+      function mark(a) { links.forEach(function (l) { l.classList.toggle('on', l === a); }); }
+      function update() {
+        if (Date.now() < lock || document.getElementById('guide').hidden) return;
+        var line = 150, cur = null;
+        items.forEach(function (x) { if (x.el.getBoundingClientRect().top <= line) cur = x; });
+        if ((window.innerHeight + window.pageYOffset) >= document.documentElement.scrollHeight - 4) cur = items[items.length - 1];
+        mark(cur ? cur.a : null);
+      }
+      links.forEach(function (a) { a.addEventListener('click', function () { mark(a); lock = Date.now() + 900; }); });
+      var tick = false;
+      window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(function () { tick = false; update(); }); } }, { passive: true });
+      window.addEventListener('resize', update);
+      update();
     })();
   })();
 </script>

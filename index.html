@@ -937,7 +937,7 @@
       function mark(a) { links.forEach(function (l) { l.classList.toggle('on', l === a); }); }
       function update() {
         if (Date.now() < lock || document.getElementById('guide').hidden) return;
-        var line = 150, cur = null;
+        var line = (parseFloat(getComputedStyle(items[0].el).scrollMarginTop) || 112) + 40, cur = null;
         items.forEach(function (x) { if (x.el.getBoundingClientRect().top <= line) cur = x; });
         if ((window.innerHeight + window.pageYOffset) >= document.documentElement.scrollHeight - 4) cur = items[items.length - 1];
         mark(cur ? cur.a : null);

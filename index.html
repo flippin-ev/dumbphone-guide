@@ -593,6 +593,11 @@
   @media (min-width: 1100px) { #guide .expect { margin-left: calc(12px - clamp(1.25rem, 4vw, 3.5rem)); margin-right: calc(12px - clamp(1.25rem, 4vw, 3.5rem)); } }
   .xkey { font-size: .9rem; margin-top: -.4rem; }
   .xmodel { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .02em; color: #3A2350; background: color-mix(in srgb, var(--pink) 45%, var(--card)); border-radius: 999px; padding: 0 .45rem; margin-left: .2rem; vertical-align: .1em; white-space: nowrap; }
+  .xmine .snap { margin: .2rem .3rem .5rem .9rem; }
+  .xmine .snap img.shot { width: 92px; height: 92px; }
+  .xmine .snap img.shot:last-child { margin-left: -26px; }
+  @media (max-width: 30rem) { .xmine .snap { float: none; justify-content: center; margin: .5rem 0 1rem; } }
+  .xmine::after { content: ""; display: block; clear: both; }
   .xmine { margin-top: 1rem; background: var(--paper); border: 1.5px dashed var(--lilac); border-radius: 16px; padding: .7rem .9rem .8rem; }
   .xmine-h { font-family: "Gluten", cursive; font-weight: 700; color: var(--plum); margin: 0 0 .25rem; font-size: 1rem; }
   .xmine li { font-size: .95rem; }
@@ -733,6 +738,7 @@
           </ul>
           <div class="xmine">
             <p class="xmine-h">What I used: Titan Pocket</p>
+            <figure class="snap" data-title="me_and_my_titan_pocket.jpg"><img class="shot zoom-open" tabindex="0" role="button" data-title="me_and_my_titan_pocket.jpg" src="titan-selfie.jpg" width="900" height="900" alt="Me making an excited face while holding up my Titan Pocket, a small black phone with a square screen and a full physical keyboard."><img class="shot zoom-open" tabindex="0" role="button" data-title="titan_pocket.jpg" src="titan-product.jpg" width="600" height="600" alt="The Titan Pocket from the front and side: a rugged black phone with a square touchscreen and a full QWERTY keyboard."></figure>
             <ul>
               <li>Android 11 with the Google Play Store (many newer models run more recent versions)</li>
               <li>3.1-inch square touchscreen and a BlackBerry-style physical QWERTY keyboard, plus voice-to-text and voice notes</li>
@@ -766,6 +772,7 @@
           </ul>
           <div class="xmine">
             <p class="xmine-h">What I use now: Sunbeam F1 Horizon</p>
+            <figure class="snap" data-title="my_sunbeam.jpg"><img class="shot zoom-open" tabindex="0" role="button" data-title="flip_phone_concert.jpg" src="sunbeam-concert.jpg" width="600" height="800" alt="My hand holding my flip phone up at a nighttime outdoor concert, with a huge crowd below lit pink and dotted with phone flashlights."><img class="shot zoom-open" tabindex="0" role="button" data-title="sunbeam_f1.jpg" src="sunbeam-product.jpg" width="600" height="600" alt="The Sunbeam F1 flip phone in navy blue, shown open with its screen and physical keypad, and closed with its small outer screen."></figure>
             <ul>
               <li>Flip phone with a T9 keypad and a small touchscreen</li>
               <li>Calls, SMS/MMS texting (no RCS), visual voicemail, and text-only email</li>

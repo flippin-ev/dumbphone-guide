@@ -139,10 +139,11 @@
 
 
   .hero .lede { font-family: "Figtree", "Segoe UI", system-ui, sans-serif; font-weight: 500; font-size: 1.2rem; color: var(--ink-soft); margin: -.5rem 0 0; }
-  .byline { margin: -.6rem 0 0; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.9; }
-  .byline .bl { white-space: nowrap; }
-  .byline .bl.top { display: block; line-height: 1.2; margin-bottom: -.2rem; }
-  @media (max-width: 30rem) { .byline .bl { display: block; } }
+  .byline { margin: -.6rem 0 0; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.75; }
+  .byline .bl { white-space: nowrap; display: block; }
+  .byline .credits { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 0 1.6rem; margin-bottom: 1.1rem; line-height: 1.6; }
+  .byline .credits .bl { display: inline-block; }
+
   .byline .name {
     position: relative; display: inline-block; margin: 0 .35em;
     font-family: "Gluten", cursive; font-weight: 700; font-size: 1.3rem;
@@ -732,7 +733,7 @@
     </div>
   </div>
   <h1>How I switched to a dumbphone</h1>
-  <p class="byline"><span class="bl top">and how you can too!!</span><span class="bl">a guide by <span class="name">EV</span></span> <span class="bl ela">with animations by <span class="name">Elena</span><em class="soon">*coming soon*</em></span></p>
+  <p class="byline"><span class="bl top">and how you can too!!</span><span class="credits"><span class="bl">a guide by <span class="name">EV</span></span><span class="bl ela">with animations by <span class="name">Elena</span><em class="soon">*coming soon*</em></span></span></p>
 </header>
 
 <p class="divider" aria-hidden="true">⋆｡˚ ☁︎ ˚｡⋆ ♡ ⋆｡˚ ☁︎ ˚｡⋆</p>

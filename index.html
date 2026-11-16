@@ -1100,25 +1100,45 @@
     }
     // real visitor counter (counts each browser session once)
     (function () {
-      var el = document.getElementById("count"), line = el.parentNode;
+      var el = document.getElementById("count");
       var base = "https://abacus.jasoncameron.dev/", key = "ev-dumbphone-guide/visits";
       var seen = false, last = 0;
       try { seen = sessionStorage.getItem("ev_counted") === "1"; } catch (e) {}
       try { last = parseInt(localStorage.getItem("ev_count"), 10) || 0; } catch (e) {}
       function show(n) { el.textContent = String(n).padStart(6, "0"); }
-      // if the counter service is slow or down, show the last count this browser saw (or keep the dots)
-      function fail() { if (last > 0) show(last); }
-      var ctrl = window.AbortController ? new AbortController() : null;
-      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); fail(); }, 6000);
-      fetch(base + (seen ? "get/" : "hit/") + key, ctrl ? { signal: ctrl.signal } : {})
-        .then(function (r) { if (!r.ok) throw 0; return r.json(); })
-        .then(function (d) {
-          if (typeof d.value !== "number") throw 0;
-          clearTimeout(timer);
-          show(d.value);
-          try { sessionStorage.setItem("ev_counted", "1"); localStorage.setItem("ev_count", String(d.value)); } catch (e) {}
-        })
-        .catch(function () { clearTimeout(timer); fail(); });
+      function done(n) {
+        show(n);
+        try { sessionStorage.setItem("ev_counted", "1"); localStorage.setItem("ev_count", String(n)); } catch (e) {}
+      }
+      // ask the counter, giving up after a few seconds
+      function ask(path) {
+        return new Promise(function (res, rej) {
+          var ctrl = window.AbortController ? new AbortController() : null;
+          var t = setTimeout(function () { if (ctrl) ctrl.abort(); rej(0); }, 5000);
+          fetch(base + path + key, ctrl ? { signal: ctrl.signal } : {})
+            .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+            .then(function (d) { clearTimeout(t); if (typeof d.value !== "number") throw 0; res(d.value); })
+            .catch(function () { clearTimeout(t); rej(0); });
+        });
+      }
+      // backup way to read the count, for browsers that block the normal request
+      function askScript() {
+        return new Promise(function (res, rej) {
+          var cb = "evCount" + Date.now(), s = document.createElement("script");
+          var t = setTimeout(function () { end(); rej(0); }, 5000);
+          function end() { clearTimeout(t); window[cb] = function () {}; s.remove(); }
+          window[cb] = function (d) { end(); if (d && typeof d.value === "number") res(d.value); else rej(0); };
+          s.onerror = function () { end(); rej(0); };
+          s.src = base + "get/" + key + "?callback=" + cb;
+          document.head.appendChild(s);
+        });
+      }
+      // count this visit; if that fails, just read the count; if the service is down, show the last count this browser saw (or keep the dots)
+      ask(seen ? "get/" : "hit/")
+        .catch(function () { return ask("get/"); })
+        .catch(askScript)
+        .then(done)
+        .catch(function () { if (last > 0) show(last); });
     })();
 
     var tabs = document.querySelectorAll('.tab');

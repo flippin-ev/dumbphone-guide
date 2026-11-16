@@ -1106,8 +1106,8 @@
       try { seen = sessionStorage.getItem("ev_counted") === "1"; } catch (e) {}
       try { last = parseInt(localStorage.getItem("ev_count"), 10) || 0; } catch (e) {}
       function show(n) { el.textContent = String(n).padStart(6, "0"); }
-      // if the counter service is slow or down, show the last count this browser saw (or hide the line)
-      function fail() { if (last > 0) show(last); else line.style.display = "none"; }
+      // if the counter service is slow or down, show the last count this browser saw (or keep the dots)
+      function fail() { if (last > 0) show(last); }
       var ctrl = window.AbortController ? new AbortController() : null;
       var timer = setTimeout(function () { if (ctrl) ctrl.abort(); fail(); }, 6000);
       fetch(base + (seen ? "get/" : "hit/") + key, ctrl ? { signal: ctrl.signal } : {})
